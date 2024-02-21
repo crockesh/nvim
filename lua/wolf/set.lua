@@ -36,3 +36,7 @@ vim.filetype.add({
         luau = "luau",
     },
 })
+
+vim.diagnostic.config({
+    update_in_insert = true,
+})
