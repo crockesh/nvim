@@ -34,6 +34,11 @@ return {
                     fflags = {
                         enable_by_default = true
                     },
+                    types = {
+                        definition_files = {
+                            "C:/Users/wolf/Documents/commons.d.luau"
+                        }
+                    },
                     server = {
                         settings = {
                             ["luau-lsp"] = {
