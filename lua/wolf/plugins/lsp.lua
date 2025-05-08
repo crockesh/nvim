@@ -6,7 +6,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
     },
     opts = {
-        ensure_installed = { "lua_ls", "luau_lsp", "tsserver", "rust_analyzer" },
+        ensure_installed = { "lua_ls", "luau_lsp", "rust_analyzer" },
         automatic_installation = true,
 
         handlers = {
