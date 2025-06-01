@@ -3,5 +3,6 @@ return {
     dependencies = {
         "saadparwaiz1/cmp_luasnip",
     },
+    build = "make install_jsregexp",
     config = true,
 }
