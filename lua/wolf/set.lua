@@ -42,3 +42,11 @@ vim.filetype.add({
 vim.diagnostic.config({
     update_in_insert = true,
 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight yanking",
+    group = vim.api.nvim_create_augroup("yank_highlight", { clear = true }),
+    callback = function()
+        vim.hl.on_yank()
+    end
+})

@@ -1,56 +1,43 @@
 return {
-    "williamboman/mason-lspconfig.nvim",
-    priority = 95,
+    "neovim/nvim-lspconfig",
     dependencies = {
-        "lopi-py/luau-lsp.nvim",
         "hrsh7th/cmp-nvim-lsp",
     },
-    opts = {
-        ensure_installed = { "lua_ls", "luau_lsp", "rust_analyzer" },
-        automatic_installation = true,
+    config = function()
+        local set = vim.lsp.config
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        set('lua_ls', {
+            on_init = function(client)
+                if client.workspace_folders then
+                    local path = client.workspace_folders[1].name
+                    if
+                        path ~= vim.fn.stdpath('config')
+                        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                    then
+                        return
+                    end
+                end
 
-        handlers = {
-            function(server_name)
-                require("lspconfig")[server_name].setup({
-                    capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                })
-            end,
-
-            lua_ls = function()
-                require("lspconfig").lua_ls.setup({
-                    capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" }
-                            }
-                        }
-                    }
-                })
-            end,
-            luau_lsp = function()
-                require("luau-lsp").setup({
-                    capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                    fflags = {
-                        enable_by_default = true
+                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                    runtime = {
+                        version = 'LuaJIT',
+                        path = {
+                            'lua/?.lua',
+                            'lua/?/init.lua',
+                        },
                     },
-                    server = {
-                        settings = {
-                            ["luau-lsp"] = {
-                                completion = {
-                                    imports = {
-                                        enabled = true,
-                                        separateGroupsWithLine = true,
-                                    }
-                                },
-                                diagnostics = {
-                                    strictDatamodelTypes = true,
-                                },
-                            }
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME
                         }
                     }
                 })
             end,
-        }
-    }
+            capabilities = capabilities,
+            settings = {
+                Lua = {}
+            }
+        })
+    end
 }
