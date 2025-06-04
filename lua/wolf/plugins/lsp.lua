@@ -44,7 +44,7 @@ return {
                                     }
                                 },
                                 diagnostics = {
-                                    strictDatamodelTypes  = true,
+                                    strictDatamodelTypes = true,
                                 },
                             }
                         }

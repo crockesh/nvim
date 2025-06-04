@@ -1,5 +1,5 @@
 return {
     "vyfor/cord.nvim",
-    build = "Cord update",
+    build = ":Cord update",
     config = true,
 }
