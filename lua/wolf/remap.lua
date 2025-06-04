@@ -28,8 +28,9 @@ end)
 vim.keymap.set('n', ']d', function()
     vim.diagnostic.jump({ count = 1 })
 end)
-
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+vim.keymap.set("n", "<leader>w", "<C-w>")
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
