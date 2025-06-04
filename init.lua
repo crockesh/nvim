@@ -1,1 +1,1 @@
-require("wolf")
+require("config")

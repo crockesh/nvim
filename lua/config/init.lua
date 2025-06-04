@@ -1,5 +1,5 @@
-require("wolf.set")
-require("wolf.remap")
+require("config.set")
+require("config.remap")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,6 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    spec = "wolf.plugins",
+    spec = "config.plugins",
     change_detection = { notify = false }
 })
