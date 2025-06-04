@@ -1,11 +1,11 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
+        'saghen/blink.cmp',
     },
     config = function()
         local set = vim.lsp.config
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
         set('lua_ls', {
             on_init = function(client)
                 if client.workspace_folders then
