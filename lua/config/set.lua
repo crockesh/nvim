@@ -41,6 +41,7 @@ vim.filetype.add({
 
 vim.diagnostic.config({
     update_in_insert = true,
+    virtual_text = true,
 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
