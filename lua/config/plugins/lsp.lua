@@ -5,7 +5,9 @@ return {
     },
     config = function()
         local set = vim.lsp.config
+        local enable = vim.lsp.enable
         local capabilities = require("blink.cmp").get_lsp_capabilities()
+
         set('lua_ls', {
             on_init = function(client)
                 if client.workspace_folders then
@@ -39,5 +41,17 @@ return {
                 Lua = {}
             }
         })
+        
+        set('prolog_lsp', {
+            cmd = { 'swipl',
+                '-g', 'use_module(library(lsp_server))',
+                '-g', 'lsp_server:main',
+                '-t', 'halt',
+                '--', 'stdio' },
+            root_markers = {'.git'},
+            filetypes = {'prolog'},
+        })
+
+        enable({"lua_ls", "prolog_lsp"})
     end
 }
