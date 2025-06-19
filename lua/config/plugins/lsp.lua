@@ -41,17 +41,17 @@ return {
                 Lua = {}
             }
         })
-        
+
         set('prolog_lsp', {
             cmd = { 'swipl',
                 '-g', 'use_module(library(lsp_server))',
                 '-g', 'lsp_server:main',
                 '-t', 'halt',
                 '--', 'stdio' },
-            root_markers = {'.git'},
-            filetypes = {'prolog'},
+            root_markers = { '.git' },
+            filetypes = { 'prolog' },
         })
 
-        enable({"lua_ls", "prolog_lsp"})
+        enable({ "lua_ls", "prolog_lsp" })
     end
 }

@@ -1,12 +1,12 @@
 return {
-    "folke/tokyonight.nvim",
-    priority = 1000,
-    init = function()
-        vim.cmd.colorscheme("tokyonight")
-    end,
+    "landerson02/ghostty-theme-sync.nvim",
+    dependencies = {
+        { "xiyaowong/transparent.nvim", build = ":TransparentEnable" },
+    },
     opts = {
-        style = "night",
-        dim_inactive = true,
-        transparent = true,
+        extra_groups = {
+            "NormalFloat",
+            "NvimTreeNormal",
+        },
     },
 }
