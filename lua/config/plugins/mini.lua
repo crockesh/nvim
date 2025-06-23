@@ -2,7 +2,6 @@ return {
     "echasnovski/mini.nvim",
     version = false,
     config = function()
-        local animate = require("mini.animate")
         local comments = require("mini.comment")
         local cursorword = require("mini.cursorword")
         local git = require("mini.git")
@@ -12,7 +11,6 @@ return {
         local notify = require("mini.notify")
         local statusline = require("mini.statusline")
 
-        animate.setup({})
         comments.setup({})
         cursorword.setup({})
         git.setup({})
